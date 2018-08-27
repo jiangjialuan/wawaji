@@ -1,0 +1,93 @@
+@charset "UTF-8";
+//背景图；
+.bis(@url) {
+  background-image: url(@url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+//宽高；
+.wh(@width,@height) {
+  width: @width;
+  height: @height;
+}
+
+//圆角；
+.border-radius (@radius) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+//字体
+.font(@size,@color) {
+  font-size: @size;
+  color: @color;
+}
+
+//图标标题
+.settxt(@width,@height,@url) {
+  vertical-align: middle;
+  span {
+    display: inline-block;
+    .wh(@width, @height);
+    .bis(@url);
+    vertical-align: middle;
+  }
+  i {
+    display: inline-block;
+    line-height: @height;
+    height: @height;
+    font-style: normal;
+    vertical-align: middle;
+  }
+}
+
+//按钮
+.btn(@size,@color,@bgcolor,@bdr,@ptp,@plr) {
+  font-size: @size;
+  color: @color;
+  background-color: @bgcolor;
+  .border-radius(@bdr);
+  padding: @ptp @plr;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+//组装radio;
+.setradio(@width, @height,@bordercolor,@bgcolor,@inwidth,@inheight,@top,@left){
+  line-height:@height;
+  label input{
+    opacity: 0;
+    position: absolute;
+  }
+  label input[type="radio"] + span {
+    .wh(@width, @height);
+    display: block;
+    border: 1px solid @bordercolor;
+    position: relative;
+    background: white;
+    border-radius: 50%;
+  }
+  label input[type="radio"]:checked + span {
+    background: @bgcolor;
+    border: 1px solid @bgcolor;
+  }
+  label input[type="radio"]:checked + span:after{
+      border: 0px;
+      opacity: 1;
+      content: '';
+      position: absolute;
+      .wh(@inwidth, @inheight);
+      background: transparent;
+      top: @top;
+      left: @left;
+      border: 2px solid #fff;
+      border-top: none;
+      border-right: none;
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+}
